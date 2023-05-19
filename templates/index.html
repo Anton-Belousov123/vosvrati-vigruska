@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <title>Поиск товара</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Поиск товара на складе</h1>
+    <form action="/" method="post" class="mt-4">
+        <div class="input-group mb-3">
+            <input type="text" name="query" class="form-control" placeholder="Введите название товара">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary">Поиск</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% if result['place'] != 'None' %}
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-body">
+            <h5 class="card-title">Информация о товаре</h5>
+            <p class="card-text"><strong>Место:</strong> {{ result['place'] }}</p>
+            <p class="card-text"><strong>Товар:</strong> {{ result['item'] }}</p>
+        </div>
+    </div>
+</div>
+{% endif %}
+<div class="container">
+    <div class="card mt-5">
+        <h5 class="card-title">Информация о пользователе</h5>
+            <p class="card-text"><strong>IP адрес:</strong> {{ addr }}</p>
+    </div>
+</div>
+<!-- Include Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
