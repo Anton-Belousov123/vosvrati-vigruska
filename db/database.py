@@ -50,6 +50,7 @@ def delete_item(article):
     )
     cur = conn.cursor()
     item = select_item(article)
+    print(item)
     if item[6] > 1:
         cur.execute("UPDATE vosvrati SET count=%s WHERE article=%s", (item[6] - 1, article))
     else:
