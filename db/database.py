@@ -30,7 +30,7 @@ def connect_item(name, article, image, stellash, polka, section):
     cur = conn.cursor()
     if not check_contains(article):
         item = select_item(article)
-        cur.execute("UPDATE vosvrati SET count=%d WHERE article=%s;", (item[6] + 1, article))
+        cur.execute("UPDATE vosvrati SET count=%s WHERE article=%s;", (item[6] + 1, article))
     else:
         cur.execute("INSERT INTO vosvrati VALUES (%s, %s, %s, %s, %s, %s, %s);", (name, article, image, stellash, polka, section, 1))
     conn.commit()
@@ -59,8 +59,8 @@ def delete_item(article):
     item = select_item(article)
     print(item)
     if item[6] > 1:
-        cur.execute("UPDATE vosvrati SET count=%d WHERE article=%s", (item[6] - 1, article))
+        cur.execute("UPDATE vosvrati SET count=%s WHERE article=%s", (item[6] - 1, article))
     else:
-        cur.execute("DELETE FROM vosvrati WHERE article=%s);", (article))
+        cur.execute("DELETE FROM vosvrati WHERE article=%s;", (article))
     conn.commit()
     conn.close()
