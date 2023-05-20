@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <meta charset="UTF-8">
     <title>Поиск товара</title>
@@ -11,6 +12,24 @@
 <body>
 <div class="container">
     <h1 class="mt-5">Поиск товара на складе</h1>
+    <div class="row">
+        <form method="POST" action="/download-stickers-for-item">
+            <button type="submit" class="btn btn-outline-primary">Скачать этикетки возврата на сегодня</button>
+        </form>
+        <a href="/create-sticker-for-place" class="ml-1">
+            <button type="submit" class="btn btn-outline-info">Создать этикетку для места хранения</button>
+        </a>
+        <a href="/download-today-order" class="ml-1">
+            <button type="submit" class="btn btn-outline-secondary">Скачать заявку на сегодня</button>
+        </a>
+        <form action="/change-mode" method="POST" class="ml-1">
+            {% if mode == 1 %}
+            <button type="submit" class="btn btn-outline-warning">Кнопка Подтвердить вкл</button>
+            {% else %}
+            <button type="submit" class="btn btn-outline-warning">Кнопка Подтвердить выкл</button>
+            {% endif %}
+        </form>
+    </div>
     <form action="/" method="post" class="mt-4">
         <div class="input-group mb-3">
             <input type="text" name="query" class="form-control" placeholder="Введите название товара">
@@ -27,14 +46,15 @@
             <h5 class="card-title">Информация о товаре</h5>
             <p class="card-text"><strong>Место:</strong> {{ result['place'] }}</p>
             <p class="card-text"><strong>Товар:</strong> {{ result['item'] }}</p>
+            <img src="{{result['photo']}}">
         </div>
     </div>
 </div>
 {% endif %}
 <div class="container">
-    <div class="card mt-5">
+    <div class="card mt-5 p-3">
         <h5 class="card-title">Информация о пользователе</h5>
-            <p class="card-text"><strong>IP адрес:</strong> {{ addr }}</p>
+        <p class="card-text"><strong>IP адрес:</strong> {{ addr }}</p>
     </div>
 </div>
 <!-- Include Bootstrap JS -->

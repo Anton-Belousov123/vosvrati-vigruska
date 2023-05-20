@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta charset="UTF-8">
+    <title>Информация о товаре</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="d-flex justify-content-center align-items-center">
+        <h1 class="mt-5">Вы выбрали товар:</h1>
+    </div>
+    <div class="d-flex justify-content-center align-items-center">
+        <img src="{{ item.image }}" class="card-img-top" alt="Изображение товара">
+    </div>
+    <div class="input-group mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Название: {{ item['name'] }}</h5>
+            <p class="card-text">Артикул: {{ item['article'] }}</p>
+            {% if is_new %}
+            <h3>Для привязки товара отсканируйте QR-код места</h3>
+            {% else %}
+            <form action="/delete-item" method="POST">
+                <p name="article" hidden>{{ item['article'] }}</p>
+            <button type="submit" class="btn btn-danger">Отвязать товар</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+    <br>
+</div>
+</div>
+</body>
+</html>
