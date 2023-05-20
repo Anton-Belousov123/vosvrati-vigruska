@@ -7,7 +7,7 @@ mode = 0
 
 @app.route('/connect-item', methods=['GET'])
 def item_page():
-    """http://127.0.0.1:5000/connect-item?name=test&article=123&image=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Qv-LaoGtRxcJ7rzQj9EMDgX0FiIDX3vuaEyAN73q&s&quantity=2"""
+    """http://127.0.0.1:8000/connect-item?name=test&article=123&image=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Qv-LaoGtRxcJ7rzQj9EMDgX0FiIDX3vuaEyAN73q&s&quantity=2"""
     global user_stats
     addr = str(request.remote_addr)
     name = request.args.get('name')

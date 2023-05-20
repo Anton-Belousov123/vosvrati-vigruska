@@ -135,7 +135,7 @@ def execute():
         for _ in range(data[i]['quantity']):
             pages_count += 1
             generate_qr(
-                f'http://90.156.225.86:5000/connect-item?name={data[i]["name"]}&article={data[i]["article"]}&image={data[i]["image"]}')
+                f'http://90.156.225.86:8000/connect-item?name={data[i]["name"]}&article={data[i]["article"]}&image={data[i]["image"]}')
             generate_description(text1=str(data[i]["article"]), text2=data[i]["name"], text3='')
             download_image(data[i]['image'])
             create_pdf(pages_count)

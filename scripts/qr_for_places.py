@@ -52,5 +52,5 @@ def create_pdf():
 def execute(data):
     create_image(f"Стеллаж: {data['stellash']}", f'Полка: {data["polka"]}', f"Секция: {data['section']}")
     generate_qr(
-        f"http://90.156.225.86:5000/connect-place?stellash={data['stellash']}&polka={data['polka']}&section={data['section']}")
+        f"http://90.156.225.86:8000/connect-place?stellash={data['stellash']}&polka={data['polka']}&section={data['section']}")
     create_pdf()
