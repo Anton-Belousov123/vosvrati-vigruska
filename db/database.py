@@ -25,7 +25,11 @@ def connect_item(name, article, image, stellash, polka, section):
         password=secret.DATABASE_PASSWORD,
     )
     cur = conn.cursor()
-    cur.execute("INSERT INTO vosvrati VALUES (%s, %s, %s, %s, %s, %s);", (name, article, image, stellash, polka, section))
+    if check_contains(article):
+        item = select_item(article)
+        cur.execute("UPDATE vosvrati SET count=%s WHERE article=%s;", (item[6] + 1, article))
+    else:
+        cur.execute("INSERT INTO vosvrati VALUES (%s, %s, %s, %s, %s, %s, %s);", (name, article, image, stellash, polka, section, 1))
     conn.commit()
     conn.close()
 
@@ -45,6 +49,10 @@ def delete_item(article):
         password=secret.DATABASE_PASSWORD,
     )
     cur = conn.cursor()
-    cur.execute("DELETE FROM vosvrati WHERE article=%s AND ctid = (SELECT ctid FROM vosvrati WHERE article=%s LIMIT 1);", (article, article))
+    item = select_item(article)
+    if item[6] > 1:
+        cur.execute("UPDATE vosvrati SET count=%s WHERE article=%s", (item[6] - 1, article))
+    else:
+        cur.execute("DELETE FROM vosvrati WHERE article=%s);", (article))
     conn.commit()
     conn.close()
