@@ -67,6 +67,7 @@ def change_mode_page():
 
 @app.route('/delete-item', methods=['POST'])
 def delete_item_page():
+    print(request.form)
     database.delete_item(request.form.get('article'))
     return render_template('success.html')
 

@@ -23,7 +23,7 @@
             <h3>Для привязки товара отсканируйте QR-код места</h3>
             {% else %}
             <form action="/delete-item" method="POST">
-                <input name="article" value="item['article']" hidden>{{ item['article'] }}</input>
+                <input name="article" hidden="true">{{ item['article'] }}</input>
             <button type="submit" class="btn btn-danger">Отвязать товар</button>
                 </form>
             {% endif %}
