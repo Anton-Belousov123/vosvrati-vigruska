@@ -33,8 +33,8 @@ def connect_item(name, article, image, stellash, polka, section):
 def check_contains(article):
     item = select_item(article)
     if item:
-        return True
-    return False
+        return False
+    return True
 
 
 def delete_item(article):
