@@ -30,6 +30,13 @@ def connect_item(name, article, image, stellash, polka, section):
     conn.close()
 
 
+def check_contains(article):
+    item = select_item(article)
+    if item:
+        return True
+    return False
+
+
 def delete_item(article):
     conn = psycopg2.connect(
         host=secret.DATABASE_HOST,

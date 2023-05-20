@@ -15,7 +15,7 @@ def item_page():
     image = request.args.get('image')
     item = {'name': name, 'article': article, 'image': image}
     user_stats[addr] = item
-    return render_template('item-qr.html', item=item, is_new=True)
+    return render_template('item-qr.html', item=item, is_new=database.check_contains(article))
 
 
 @app.route('/connect-place-accept', methods=["POST"])
