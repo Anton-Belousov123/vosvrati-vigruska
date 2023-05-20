@@ -25,7 +25,7 @@ def connect_item(name, article, image, stellash, polka, section):
         password=secret.DATABASE_PASSWORD,
     )
     cur = conn.cursor()
-    if check_contains(article):
+    if not check_contains(article):
         item = select_item(article)
         cur.execute("UPDATE vosvrati SET count=%s WHERE article=%s;", (item[6] + 1, article))
     else:
