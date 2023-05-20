@@ -45,6 +45,6 @@ def delete_item(article):
         password=secret.DATABASE_PASSWORD,
     )
     cur = conn.cursor()
-    cur.execute("DELETE FROM vosvrati WHERE article=%s LIMIT 1;", (article))
+    cur.execute("DELETE FROM vosvrati WHERE article=%s AND ctid = (SELECT ctid FROM vosvrati WHERE article=%s LIMIT 1);", (article, article))
     conn.commit()
     conn.close()
