@@ -4,6 +4,7 @@ from sc import secret
 
 
 def select_item(article):
+    article = str(article)
     conn = psycopg2.connect(
         host=secret.DATABASE_HOST,
         database=secret.DATABASE_NAME,
@@ -18,6 +19,8 @@ def select_item(article):
 
 
 def connect_item(name, article, image, stellash, polka, section):
+
+    article = str(article)
     conn = psycopg2.connect(
         host=secret.DATABASE_HOST,
         database=secret.DATABASE_NAME,
@@ -35,6 +38,8 @@ def connect_item(name, article, image, stellash, polka, section):
 
 
 def check_contains(article):
+
+    article = str(article)
     item = select_item(article)
     if item:
         return False
@@ -42,6 +47,8 @@ def check_contains(article):
 
 
 def delete_item(article):
+
+    article = str(article)
     conn = psycopg2.connect(
         host=secret.DATABASE_HOST,
         database=secret.DATABASE_NAME,
