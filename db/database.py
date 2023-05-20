@@ -61,6 +61,6 @@ def delete_item(article):
     if item[6] > 1:
         cur.execute("UPDATE vosvrati SET count=%s WHERE article=%s", (item[6] - 1, article))
     else:
-        cur.execute("DELETE FROM vosvrati WHERE article=%s;", (article))
+        cur.execute("DELETE FROM vosvrati WHERE article=%s;", (article,))
     conn.commit()
     conn.close()
